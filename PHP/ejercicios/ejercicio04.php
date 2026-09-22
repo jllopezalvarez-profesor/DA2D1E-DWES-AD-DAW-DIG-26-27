@@ -5,6 +5,7 @@ $month = 10;
 $year = 2025;
 
 $firstDayOfMonth = DateTime::createFromFormat("Y-m-d", "$year-$month-1");
+
 $numberOfDaysInMonth = $firstDayOfMonth->format("t");
 $startWeekDay = $firstDayOfMonth->format("w");
 
