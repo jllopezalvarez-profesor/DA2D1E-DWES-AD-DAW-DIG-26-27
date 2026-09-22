@@ -11,6 +11,13 @@ $maxNumber = 9;
     <title>Tabla de multiplicar de los números del <?= $minNumber ?> al <?= $maxNumber ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
+    <style>
+        thead th,
+        tbody th:first-child {
+            background-color: darkgreen;
+            color: wheat;
+        }
+    </style>
 </head>
 
 <body>
