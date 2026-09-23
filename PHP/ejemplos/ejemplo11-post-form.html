@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario para ejemplo de POST en PHP</title>
+</head>
+
+<body>
+    <h1>Formulario para ejemplo de POST en PHP</h1>
+
+    <form action="ejemplo11-post.php" method="get">
+        <p><label>Nombre: <input type="text" name="nombre"></label></p>
+        <p><label>Apellido: <input type="text" name="apellido"></label></p>
+        <fieldset>
+            <legend>Elige tu comida preferida. Puedes elegir más de una:</legend>
+            <ul>
+                <li><label><input type="checkbox" name="comida[]" value="L">Lentejas</label></li>
+                <li><label><input type="checkbox" name="comida[]" value="C">Cocido</label></li>
+                <li><label><input type="checkbox" name="comida[]" value="HB">Hamburguesa</label></li>
+                <li><label><input type="checkbox" name="comida[]" value="FP">Fingers de pollo</label></li>
+                <li><label><input type="checkbox" name="comida[]" value="H">Helado de chocolate</label></li>
+            </ul>
+        </fieldset>
+
+        <p><button type="submit">Enviar formulario</button></p>
+
+    </form>
+
+</body>
+
+</html>
