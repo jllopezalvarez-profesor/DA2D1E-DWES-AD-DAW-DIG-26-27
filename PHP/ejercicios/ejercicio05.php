@@ -24,6 +24,7 @@ $maxNumber = $_GET['max'];
 
     <div class="container">
         <h1>Tabla de multiplicar de los números del <?= $minNumber ?> al <?= $maxNumber ?></h1>
+
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
