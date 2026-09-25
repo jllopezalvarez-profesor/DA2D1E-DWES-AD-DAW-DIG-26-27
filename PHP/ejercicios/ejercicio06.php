@@ -44,12 +44,17 @@
     <div class="container">
         <h1>Tabla de multiplicar entre dos números</h1>
         <?php
-        $minNumber = filter_var($_POST['min'], FILTER_VALIDATE_INT);
-        $maxNumber = filter_var($_POST['max'], FILTER_VALIDATE_INT);
+        // Con filter_var, al acceder a $_GET['parametro'], 
+        // si no existe este parámetro (no está en la query), lanza un warning
+        // $minNumber = filter_var($_GET['min'], FILTER_VALIDATE_INT);
+        // $maxNumber = filter_var($_GET['max'], FILTER_VALIDATE_INT);
+        $minNumber = filter_input(INPUT_GET, 'min', FILTER_VALIDATE_INT);
+        $maxNumber = filter_input(INPUT_GET, 'max', FILTER_VALIDATE_INT);
         ?>
         <?php if (!$minNumber || !$maxNumber): ?>
-            <p>Alguno de los dos valores introducidos no es un número entero</p>
-
+            <p>Alguno de los dos valores introducidos falta o no es un número entero</p>
+        <?php elseif ($minNumber >= $maxNumber): ?>
+            <p>Error en los números introducidos. El primero no puede ser mayor que el segundo.</p>
         <?php else: ?>
             <table class="table table-striped table-hover">
                 <thead>
