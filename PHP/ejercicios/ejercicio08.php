@@ -27,13 +27,13 @@
 
         <?php
         $month = filter_input(
-            INPUT_GET,
+            INPUT_POST,
             'm',
             FILTER_VALIDATE_INT,
             ["options" => ["min_range" => 1, "max_range" => 12]] // No uso "default" en opciones porque si lo hago nunca devolverá falso.
         );
         $year = filter_input(
-            INPUT_GET,
+            INPUT_POST,
             'y',
             FILTER_VALIDATE_INT,
             ["options" => ["min_range" => 2020, "max_range" => 2030]]
