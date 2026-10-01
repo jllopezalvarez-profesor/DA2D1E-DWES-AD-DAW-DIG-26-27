@@ -48,6 +48,7 @@ $OPCIONES_PAGO = [
             $errores[] = 'No se ha seleccionado tipo de masa.';
             // array_push($errores, 'No se ha seleccionado tipo de masa');
         } elseif (!array_key_exists($_POST['tipoMasa'], $TIPOS_MASA)) {
+
             $errores[] = 'El tipo de masa seleccionado no es correcto.';
         }
 
