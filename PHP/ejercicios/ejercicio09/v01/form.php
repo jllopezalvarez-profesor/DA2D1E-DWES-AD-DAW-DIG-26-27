@@ -14,6 +14,11 @@ $INGREDIENTES = [
     'IA-XQ' => 'Extra de queso',
     'IA-BBQ' => 'Salsa barbacoa'
 ];
+$OPCIONES_PAGO = [
+    'T' => 'Tarjeta bancaria',
+    'B' => 'Bizum',
+    'P' => 'PayPal'
+];
 ?>
 
 <head>
@@ -30,85 +35,105 @@ $INGREDIENTES = [
         <h1>Pide tu pizza</h1>
 
         <form action="order.php" method="post">
-            <fieldset class="form-group">
-                <legend class="form-label">Configura tu pizza</legend>
-                <fieldset class="form-group">
-                    <legend class="form-label">Elige el tipo de masa</legend>
+            <!-- Añadido borde para agrupar visualmente  -->
+            <fieldset class="mb-3 border p-3 rounded">
+
+                <!-- Tamaño h5/fs-5 para jerarquía, y eliminar flotado para que se coloque en su sitio natural -->
+                <!-- También ancho automático y ajustes de páding y negrita -->
+                <legend class="float-none w-auto px-2 fs-5 fw-bold pb-2">Configura tu pizza</legend>
+
+                <fieldset class="mb-3">
+                    <!-- Más pequeño para igualarlo a label -->
+                    <legend class="fs-6">Elige el tipo de masa</legend>
                     <?php foreach ($TIPOS_MASA as $controlValue => $text): ?>
                         <div class="form-check">
                             <input class="form-check-input" type="radio"
                                 value="<?= $controlValue ?>" id="tm-<?= $controlValue ?>" name="tipoMasa"
-                                <?php // echo $value == 'SG' ? 'checked' : '' 
-                                ?> required>
+                                required>
                             <label class="form-check-label" for="tm-<?= $controlValue ?>"><?= $text ?></label>
                         </div>
-                    <? endforeach ?>
+                    <?php endforeach ?>
                 </fieldset>
-                <label class="form-label" for="tamanio">Tamaño</label>
-                <select class="form-select" id="tamanio" name="tamanio" required>
-                    <option value="">Selecciona un tamaño</option>
-                    <?php foreach ($TAMANIOS as $controlValue => $text): ?>
-                        <option value="<?= $controlValue ?>"><?= $text ?></option>
-                    <?php endforeach ?>
-                </select>
 
-                <label class="form-label" for="base">Pizza base</label>
-                <select class="form-select" id="base" name="base" required>
-                    <option value="">Selecciona una pizza base</option>
-                    <?php foreach ($BASES as $controlValue => $text): ?>
-                        <option value="<?= $controlValue ?>"><?= $text ?></option>
-                    <?php endforeach ?>
-                </select>
+                <div class="mb-3">
+                    <label class="form-label" for="tamanio">Tamaño</label>
+                    <select class="form-select" id="tamanio" name="tamanio" required>
+                        <option value="">Selecciona un tamaño</option>
+                        <?php foreach ($TAMANIOS as $controlValue => $text): ?>
+                            <option value="<?= $controlValue ?>"><?= $text ?></option>
+                        <?php endforeach ?>
+                    </select>
+                </div>
 
+                <div class="mb-3">
+                    <label class="form-label" for="base">Pizza base</label>
+                    <select class="form-select" id="base" name="base" required>
+                        <option value="">Selecciona una pizza base</option>
+                        <?php foreach ($BASES as $controlValue => $text): ?>
+                            <option value="<?= $controlValue ?>"><?= $text ?></option>
+                        <?php endforeach ?>
+                    </select>
+                </div>
 
-                <fieldset class="form-group">
-                    <legend class="form-label">Elige ingredientes adicionales</legend>
+                <fieldset class="mb-3">
+                    <!-- Más pequeño para igualarlo a label -->
+                    <legend class="fs-6">Elige ingredientes adicionales</legend>
                     <?php foreach ($INGREDIENTES as $controlValue => $text): ?>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox"
                                 value="<?= $controlValue ?>" id="ig-<?= $controlValue ?>" name="ingredientes[]">
                             <label class="form-check-label" for="ig-<?= $controlValue ?>"><?= $text ?></label>
                         </div>
-                    <? endforeach ?>
+                    <?php endforeach ?>
                 </fieldset>
-
-
-
-                o Seleccionar la pizza base (obligatorio y sólo se podrá seleccionar una base):
-                 Margarita (M)
-                 Barbacoa (BBQ)
-                 Cuatro quesos (4Q)
-                o Seleccionar ingredientes adicionales (opcional, se podrá seleccionar todos los que se deseen, o ninguno)
-                 Pimiento (IA-PI)
-                 Cebolla (IA-CE)
-                 Carne picada (IA-CP)
-                 Pollo (IA-PL)
-                 Berenjena (IA-BE)
-                 Extra de queso (IA-XQ)
-                 Salsa barbacoa (IA-BBQ)
-
             </fieldset>
 
-            <fieldset>
-                <legend>Danos tus datos</legend>
-
-                Nombre
-                o Apellidos
-                o Dirección completa
-                o Teléfono
-                o Observaciones (puede ser un texto largo)
+            <fieldset class="mb-3 border p-3 rounded">
+                <!-- Tamaño h5/fs-5 para jerarquía, y eliminar flotado para que se coloque en su sitio natural -->
+                <legend class="float-none w-auto px-2 fs-5 fw-bold">Datos de entrega</legend>
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" name="nombre" id="nombre" required>
+                </div>
+                <div class="mb-3">
+                    <label for="apellido" class="form-label">Apellidos</label>
+                    <input type="text" class="form-control" name="apellido" id="apellido" required>
+                </div>
+                <div class="mb-3">
+                    <label for="direccion" class="form-label">Dirección completa</label>
+                    <input type="text" class="form-control" name="direccion" id="direccion" required>
+                </div>
+                <div class="mb-3">
+                    <label for="telefono" class="form-label">Teléfono</label>
+                    <input type="text" class="form-control" name="telefono" id="telefono" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="text" class="form-control" name="email" id="email" placeholder="abc@mail.com" required>
+                </div>
+                <div class="mb-3">
+                    <label for="comentarios" class="form-label">Observaciones</label>
+                    <textarea class="form-control" name="comentarios" id="comentarios"></textarea>
+                </div>
             </fieldset>
 
-            <fieldset>
-                <legend>Pago</legend>
-                Tarjeta bancaria (T)
-                o Bizum (B)
-                o PayPal (P)
+            <fieldset class="mb-3 border p-3 pt-0 rounded">
+                <!-- Tamaño h5/fs-5 para jerarquía, y eliminar flotado para que se coloque en su sitio natural -->
+                <legend class="float-none w-auto px-2 fs-5 fw-bold">Método de pago</legend>
+                <?php foreach ($OPCIONES_PAGO as $controlValue => $text): ?>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio"
+                            value="<?= $controlValue ?>" id="mp-<?= $controlValue ?>" name="metodoPago" required>
+                        <label class="form-check-label" for="mp-<?= $controlValue ?>"><?= $text ?></label>
+                    </div>
+                <? endforeach ?>
             </fieldset>
 
 
-
-            <button type="submit">Enviar</button>
+            <!-- Ancho completo en móviles, centrado/automático a partir de pantallas medianas (md) -->
+            <div class="mb-3 d-grid d-md-flex justify-content-md-center">
+                <button type="submit" class="btn btn-primary">Realizar el pedido</button>
+            </div>
 
         </form>
 
