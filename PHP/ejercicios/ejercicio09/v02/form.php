@@ -1,25 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 
-<?php
-$TIPOS_MASA = ['F' => 'Fina', 'G' => 'Gruesa', 'Q' => 'Borde relleno de queso', 'SG' => 'Sin gluten'];
-$TAMANIOS = ['S' => 'Pequeña', 'M' => 'Mediana', 'L' => 'Grande', 'XL' => 'Gigante'];
-$BASES = ['M' => 'Margarita', 'BBQ' => 'Barbacoa', '4Q' => 'Cuatro quesos'];
-$INGREDIENTES = [
-    'IA-PI' => 'Pimiento',
-    'IA-CE' => 'Cebolla',
-    'IA-CP' => 'Carne picada',
-    'IA-PL' => 'Pollo',
-    'IA-BE' => 'Berenjena',
-    'IA-XQ' => 'Extra de queso',
-    'IA-BBQ' => 'Salsa barbacoa'
-];
-$OPCIONES_PAGO = [
-    'T' => 'Tarjeta bancaria',
-    'B' => 'Bizum',
-    'P' => 'PayPal'
-];
-?>
+<?php include_once 'common.php'; ?>
 
 <head>
     <meta charset="UTF-8">
@@ -34,7 +16,7 @@ $OPCIONES_PAGO = [
     <div class="container">
         <h1>Pide tu pizza</h1>
 
-        <form action="order.php" method="post">
+        <form action="order.php" method="post" novalidate>
             <!-- Añadido borde para agrupar visualmente  -->
             <fieldset class="mb-3 border p-3 rounded">
 
