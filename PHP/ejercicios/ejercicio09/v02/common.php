@@ -16,3 +16,14 @@ $OPCIONES_PAGO = [
     'B' => 'Bizum',
     'P' => 'PayPal'
 ];
+
+
+function ingredientesSonValidos($ingredientes, $ingredientesValidos)
+{
+    foreach ($ingredientes as $codIngrediente) {
+        if (!array_key_exists($codIngrediente, $ingredientesValidos)) {
+            return false;
+        }
+    }
+    return true;
+}
