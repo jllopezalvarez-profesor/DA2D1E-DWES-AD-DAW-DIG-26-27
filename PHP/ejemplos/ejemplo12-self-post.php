@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
 
+<?php
+
+//echo "Esto es un trozo de código generado ";
+
+?>
+
 <head>
+    <!-- Comentario de HTML -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejemplo de envío de formulario a sí mismo</title>
@@ -14,13 +21,14 @@
 
         <?php
 
+        $errores = [];
+
         $parametro1 = '';
         $parametro2 = '';
         $parametro3 = '';
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-            $errores = [];
 
             $parametro1 = trim($_POST['parametro1'] ?? '');
             if (empty($parametro1)) {
