@@ -11,11 +11,15 @@ $errores = [];
 // Inicializar variables de parámetros para que no fallen en GET
 $tipoMasa = '';
 $tamanio = '';
+$base = '';
 $ingredientes = [];
 $nombre = '';
 $apellido = '';
-
+$direccion = '';
+$telefono = '';
+$email = '';
 $comentarios = '';
+$metodoPago = '';
 
 // Validar datos, solo se hace en POST, porque si no 
 // es POST, es que no se han enviado datos
@@ -191,7 +195,7 @@ $hayErrores = !empty($errores);
                                 <select class="form-select" id="base" name="base" required>
                                     <option value="">Selecciona una pizza base</option>
                                     <?php foreach ($BASES as $controlValue => $text): ?>
-                                        <option value="<?= $controlValue ?>"><?= $text ?></option>
+                                        <option value="<?= $controlValue ?>" <?= $base === $controlValue ? 'selected' : '' ?>><?= $text ?></option>
                                     <?php endforeach ?>
                                 </select>
                             </div>
@@ -251,7 +255,7 @@ $hayErrores = !empty($errores);
                         <div class="col-12 mb-3">
                             <div class="mb-3">
                                 <label for="direccion" class="form-label">Dirección completa</label>
-                                <input type="text" class="form-control" name="direccion" id="direccion" required>
+                                <input type="text" class="form-control" name="direccion" id="direccion" required value="<?= $direccion ?>">
                             </div>
                         </div>
 
@@ -259,7 +263,7 @@ $hayErrores = !empty($errores);
                         <div class="col-12 col-md-6 mb-3">
                             <div class="mb-3">
                                 <label for="telefono" class="form-label">Teléfono</label>
-                                <input type="text" class="form-control" name="telefono" id="telefono" required>
+                                <input type="text" class="form-control" name="telefono" id="telefono" required value="<?= $telefono ?>">
                             </div>
                         </div>
 
@@ -267,7 +271,7 @@ $hayErrores = !empty($errores);
                         <div class="col-12 col-md-6 mb-3">
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input type="text" class="form-control" name="email" id="email" placeholder="abc@mail.com" required>
+                                <input type="text" class="form-control" name="email" id="email" placeholder="abc@mail.com" required value="<?= $email ?>">
                             </div>
                         </div>
 
@@ -294,7 +298,8 @@ $hayErrores = !empty($errores);
                                 <?php foreach ($OPCIONES_PAGO as $controlValue => $text): ?>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio"
-                                            value="<?= $controlValue ?>" id="mp-<?= $controlValue ?>" name="metodoPago" required>
+                                            value="<?= $controlValue ?>" id="mp-<?= $controlValue ?>" name="metodoPago" required
+                                            <?= $controlValue === $metodoPago ? 'checked' : '' ?>>
                                         <label class="form-check-label" for="mp-<?= $controlValue ?>"><?= $text ?></label>
                                     </div>
                                 <? endforeach ?>
