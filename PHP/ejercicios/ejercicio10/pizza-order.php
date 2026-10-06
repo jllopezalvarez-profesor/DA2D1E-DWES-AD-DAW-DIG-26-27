@@ -15,6 +15,8 @@ $ingredientes = [];
 $nombre = '';
 $apellido = '';
 
+$comentarios = '';
+
 // Validar datos, solo se hace en POST, porque si no 
 // es POST, es que no se han enviado datos
 if ($esPost) {
@@ -273,7 +275,7 @@ $hayErrores = !empty($errores);
                         <div class="col-12 mb-3">
                             <div class="mb-3">
                                 <label for="comentarios" class="form-label">Observaciones</label>
-                                <textarea class="form-control" name="comentarios" id="comentarios"></textarea>
+                                <textarea class="form-control" name="comentarios" id="comentarios"><?= $comentarios ?></textarea>
                             </div>
                         </div>
 
@@ -307,6 +309,40 @@ $hayErrores = !empty($errores);
                     <button type="submit" class="btn btn-primary">Realizar el pedido</button>
                 </div>
             </form>
+
+        <?php else: ?>
+            <p>Gracias por realizar tu pedido. Aquí lo tienes:</p>
+            <ul>
+                <!-- Configuración de la pizza (traduciendo claves por su valor legible) -->
+                <li><strong>Tipo de masa:</strong> <?= htmlspecialchars($TIPOS_MASA[$tipoMasa]) ?></li>
+                <li><strong>Tamaño:</strong> <?= htmlspecialchars($TAMANIOS[$tamanio]) ?></li>
+                <li><strong>Pizza base:</strong> <?= htmlspecialchars($BASES[$base]) ?></li>
+
+                <!-- Ingredientes adicionales (mapeando el array de checkboxes) -->
+                <li><strong>Ingredientes adicionales:</strong>
+                    <?php
+                    if (!empty($ingredientes)) {
+                        $textosIngredientes = array_map(fn($i) => $INGREDIENTES[$i], $ingredientes);
+                        echo htmlspecialchars(implode(', ', $textosIngredientes));
+                    } else {
+                        echo 'Ninguno';
+                    }
+                    ?>
+                </li>
+
+                <!-- Datos de entrega -->
+                <li><strong>Nombre:</strong> <?= htmlspecialchars($nombre . ' ' . $apellido) ?></li>
+                <li><strong>Dirección:</strong> <?= htmlspecialchars($direccion) ?></li>
+                <li><strong>Teléfono:</strong> <?= htmlspecialchars($telefono) ?></li>
+                <li><strong>Email:</strong> <?= htmlspecialchars($email) ?></li>
+
+                <?php if (!empty($comentarios)): ?>
+                    <li><strong>Observaciones:</strong> <?= htmlspecialchars($comentarios) ?></li>
+                <?php endif; ?>
+
+                <!-- Método de pago -->
+                <li><strong>Método de pago:</strong> <?= htmlspecialchars($OPCIONES_PAGO[$metodoPago]) ?></li>
+            </ul>
         <?php endif ?>
 
 
