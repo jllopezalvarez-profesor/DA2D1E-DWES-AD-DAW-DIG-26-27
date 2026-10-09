@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo básico de subida de ficheros</title>
+</head>
+
+<body>
+    <h1>Ejemplo básico de subida de ficheros</h1>
+
+    <form method="post" action="procesar-basico.php" enctype="multipart/form-data">
+        <p>
+            <label>Observaciones:
+                <textarea name="observaciones"></textarea>
+            </label>
+        </p>
+        <p>
+            <label>Fichero adjunto:<br>
+                <!-- <input type="file" name="fichero[]" multiple> -->
+                <input type="file" name="fichero1">
+                <input type="file" name="fichero2">
+                <input type="file" name="fichero3">
+                <input type="file" name="fichero4">
+            </label>
+        </p>
+        <p><button type="submit">Enviar fichero</button></p>
+
+    </form>
+
+</body>
+
+</html>
