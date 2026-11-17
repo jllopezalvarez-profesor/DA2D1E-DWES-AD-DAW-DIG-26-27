@@ -1,0 +1,15 @@
+package es.jllopezalvarez.dwes.ejemploiocspring;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class Application {
+
+    public static void main(String[] args) {
+        System.out.println("Esto lo escribo yo, pero no es el sitio correcto...");
+        SpringApplication.run(Application.class, args);
+        System.out.println("Esto lo escribo yo, pero sigue sin ser el sitio correcto...");
+    }
+
+}
