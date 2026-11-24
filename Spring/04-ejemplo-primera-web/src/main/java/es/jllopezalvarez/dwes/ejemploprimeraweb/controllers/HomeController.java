@@ -1,5 +1,6 @@
 package es.jllopezalvarez.dwes.ejemploprimeraweb.controllers;
 
+import es.jllopezalvarez.dwes.ejemploprimeraweb.services.NameService;
 import net.datafaker.Faker;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -17,12 +19,13 @@ import java.util.stream.Stream;
 public class HomeController {
 
 
-    private final Faker faker;
+    private final NameService nameService;
     private int requestCount = 0;
 
-    public HomeController(Faker faker) {
-        this.faker = faker;
+    public HomeController(NameService nameService) {
+        this.nameService = nameService;
     }
+
 
     //@RequestMapping()
 
@@ -41,17 +44,15 @@ public class HomeController {
         return "home";
     }
 
-    @GetMapping("/antonio")
+    @GetMapping({"/antonio", "/antonio/"})
     public ModelAndView homeAntonio(Model model) {
         requestCount++;
         System.out.printf("En petición nº %s.%n", requestCount);
 
         ModelAndView modelAndView = new ModelAndView("homeAntonio");
         modelAndView.addObject("requestNumber", requestCount);
-
-        List<String> names = Stream.generate(() -> faker.name().fullName()).limit(10).toList();
-
-        modelAndView.addObject("names", names);
+        modelAndView.addObject("names", nameService.getRandomNames(10));
+        modelAndView.addObject("generatedAt", LocalDateTime.now().toString());
 
 
         return modelAndView;

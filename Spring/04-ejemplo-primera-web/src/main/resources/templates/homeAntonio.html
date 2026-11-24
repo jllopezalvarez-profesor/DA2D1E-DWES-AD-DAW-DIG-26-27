@@ -6,12 +6,17 @@
 </head>
 <body>
 <h1>Página con datos de nuestra primera aplicación</h1>
-<p>Estoy en la petición nº <span th:text="${requestNumber}"></span>.</p>
+<p>Estoy en la petición nº <span th:text="${requestNumber}" >Eooooooooo</span>.</p>
 
 <p>Lista de personas</p>
 <ul>
-    <li th:each="name : ${names}" th:text="${name}" >Nombre de la persona</li>
+    <li th:each="nombre : ${names}" th:text="${nombre}" >Nombre de la persona</li>
 </ul>
+
+<p>Esta página se generó a las
+    <span title="esto se sustituye"
+          th:title="${generatedAt}"
+          th:text="${generatedAt}"> tal tal del tal tal (se sustituye)</span></p>
 
 </body>
 </html>
