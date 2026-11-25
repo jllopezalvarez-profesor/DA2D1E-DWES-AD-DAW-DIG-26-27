@@ -11,6 +11,7 @@ import java.time.Period;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Builder
 public class Person {
     @Setter(AccessLevel.NONE)
     @EqualsAndHashCode.Include
