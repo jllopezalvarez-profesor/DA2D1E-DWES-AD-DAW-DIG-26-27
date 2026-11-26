@@ -1,11 +1,42 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Listado de personas</title>
+    <style>
+        table{
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+        }
+    </style>
 </head>
 <body>
 <h1>Listado de personas</h1>
+<table>
+    <thead>
+    <tr>
+    <th scope="col">Dni</th>
+    <th scope="col">Nombre</th>
+    <th scope="col">Apellidos</th>
+    <th scope="col">Fecha de nacimientp</th>
+    <th scope="col">Edad</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="person : ${people}" >
+        <td th:text="${person.dni}">el dni</td>
+        <td th:text="${person.getFirstName()}">el nombre</td>
+        <td th:text="${person.lastName}">los apellidos</td>
+        <td th:text="${person.birthDate}">fecha de nacimiento</td>
+        <td th:text="${person.age}">edad</td>
+    </tr>
+
+    </tbody>
+</table>
+
+
 </body>
 </html>

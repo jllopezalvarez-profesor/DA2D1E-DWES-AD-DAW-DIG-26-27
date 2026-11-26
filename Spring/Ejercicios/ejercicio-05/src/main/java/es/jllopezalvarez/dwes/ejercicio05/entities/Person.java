@@ -20,7 +20,7 @@ public class Person {
     private String lastName;
     private LocalDate birthDate;
 
-    private int getAge(){
+    public int getAge(){
         return Period.between(this.birthDate, LocalDate.now()).getYears();
     }
 
