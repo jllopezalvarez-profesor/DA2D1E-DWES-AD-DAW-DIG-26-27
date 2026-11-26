@@ -4,7 +4,9 @@ import es.jllopezalvarez.dwes.ejercicio05.entities.Person;
 import net.datafaker.Faker;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Stream;
 
 @Service
 public class PersonServiceImpl implements PersonService {
@@ -16,7 +18,7 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public List<Person> find(int count) {
-        return List.of();
+        return Stream.generate(this::findOne).limit(count).toList();
     }
 
     @Override
