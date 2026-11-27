@@ -15,6 +15,7 @@
 </head>
 <body>
 <h1>Listado de personas</h1>
+<h2>Usando th:each sin usar th:object</h2>
 <table>
     <thead>
     <tr>
@@ -32,6 +33,29 @@
         <td th:text="${person.lastName}">los apellidos</td>
         <td th:text="${person.birthDate}">fecha de nacimiento</td>
         <td th:text="${person.age}">edad</td>
+    </tr>
+
+    </tbody>
+</table>
+
+<h2>Usando th:each con th:object</h2>
+<table>
+    <thead>
+    <tr>
+        <th scope="col">Dni</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellidos</th>
+        <th scope="col">Fecha de nacimientp</th>
+        <th scope="col">Edad</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="person : ${people}" th:object="${person}" >
+        <td th:text="*{dni}">el dni</td>
+        <td th:text="*{getFirstName()}">el nombre</td>
+        <td th:text="*{lastName}">los apellidos</td>
+        <td th:text="*{birthDate}">fecha de nacimiento</td>
+        <td th:text="*{age}">edad</td>
     </tr>
 
     </tbody>

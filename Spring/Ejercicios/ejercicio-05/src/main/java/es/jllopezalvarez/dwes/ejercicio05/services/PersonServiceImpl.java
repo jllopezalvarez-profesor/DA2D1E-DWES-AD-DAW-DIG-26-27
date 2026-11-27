@@ -27,7 +27,7 @@ public class PersonServiceImpl implements PersonService {
                 .dni(faker.idNumber().valid())
                 .firstName(faker.name().firstName())
                 .lastName(faker.name().lastName())
-                .birthDate(faker.timeAndDate().birthday(20, 40))
+                .birthDate(faker.timeAndDate().birthday(10, 40))
                 .build();
 
 

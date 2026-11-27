@@ -7,33 +7,36 @@
 </head>
 <body>
 <h1>Persona aleatoria</h1>
-<p>Estos son los datos de la persona generada:</p>
+<p>Estos son los datos de la persona generada. La edad solo aparece si es mayor que 18 años, usando th:if, sin
+    th:block.</p>
 <dl>
     <dt>Id:</dt>
-    <dd th:text="${person.getDni()}" >Aquí va el ID</dd>
+    <dd th:text="${person.getDni()}">Aquí va el ID</dd>
     <dt>Nombre:</dt>
-    <dd th:text="${person.getFirstName()}" >Aquí va el nombre</dd>
+    <dd th:text="${person.getFirstName()}">Aquí va el nombre</dd>
     <dt>Apellidos:</dt>
     <dd th:text="${person.lastName}">Aquí van los apellidos</dd>
     <dt>Fecha de nacimiento:</dt>
     <dd th:text="${person.birthDate}">Aquí va la fecha de nacimiento</dd>
-    <dt>Edad:</dt>
-    <dd th:text="${person.age}">Aquí va la edad</dd>
+    <dt th:if="${person.age} >= 18">Edad:</dt>
+    <dd th:if="${person.age} >= 18" th:text="${person.age}">Aquí va la edad</dd>
 </dl>
 
 
-<p>Estos son los datos de la persona generada (obteniéndolos con th:object):</p>
+<p>Estos son los datos de la persona generada (obteniéndolos con th:object). La edad > 18 se muestra usando th:block</p>
 <dl th:object="${person}">
     <dt>Id:</dt>
-    <dd th:text="*{getDni()}" >Aquí va el ID</dd>
+    <dd th:text="*{getDni()}">Aquí va el ID</dd>
     <dt>Nombre:</dt>
-    <dd th:text="*{getFirstName()}" >Aquí va el nombre</dd>
+    <dd th:text="*{getFirstName()}">Aquí va el nombre</dd>
     <dt>Apellidos:</dt>
     <dd th:text="*{lastName}">Aquí van los apellidos</dd>
     <dt>Fecha de nacimiento:</dt>
     <dd th:text="*{birthDate}">Aquí va la fecha de nacimiento</dd>
-    <dt>Edad:</dt>
-    <dd th:text="*{age}">Aquí va la edad</dd>
+    <th:block th:if="${person.age} >= 18">
+        <dt>Edad:</dt>
+        <dd th:text="*{age}">Aquí va la edad</dd>
+    </th:block>
 </dl>
 
 </body>
